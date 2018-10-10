@@ -13,7 +13,7 @@ instances:
     # tags:
     #   environment: default_environment
     #   datacenter: default_datacenter
-    
+
     # user: username
     # password: password
     # process_name_regex: .*process_name.* # Instead of specifying a host, and port. The agent can connect using the attach api.
@@ -22,8 +22,13 @@ instances:
     # name: cassandra_instance
     # java_bin_path: /path/to/java # Optional, should be set if the agent cannot find your java executable
     # java_options: "-Xmx200m -Xms50m" # Optional, Java JVM options
-    # trust_store_path: /path/to/trustStore.jks # Optional, should be set if ssl is enabled
+    #
+    # trust_store_path: /path/to/trustStore.jks # Optional, should be set if "com.sun.management.jmxremote.ssl" is set to true on the target JVM.
     # trust_store_password: password
+    # key_store_path: /path/to/keyStore.jks # Optional, should be set if "com.sun.management.jmxremote.ssl.need.client.auth" is set to true on the target JVM.
+    # key_store_password: password
+    # rmi_registry_ssl: false # Optional, should be set to true if "com.sun.management.jmxremote.registry.ssl" is set to true on the target JVM.
+    #
 
 ## Log Section (Available for Agent >=6.0)
 
@@ -35,14 +40,14 @@ instances:
     #   source : (mandatory) attribute that defines which integration is sending the logs
     #   sourcecategory : (optional) Multiple value attribute. Can be used to refine the source attribtue
     #   tags: (optional) add tags to each logs collected
-    
+
     # - type: file
     #   path: /var/log/cassandra/*.log
     #   source: cassandra
     #   sourcecategory: database
     #   service: myapplication
-    
-    
+
+
 init_config:
   is_jmx: true
   collect_default_metrics: true
